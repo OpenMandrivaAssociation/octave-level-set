@@ -1,0 +1,18 @@
+Description: Honor the CPPFLAGS environment variable
+ This is required in Debian, such that hardening flags like
+ -D_FORTIFY_SOURCE=2 are used in the compilation of C++ files.
+Author: Rafael Laboissière <rafael@debian.org>
+Forwarded: no
+Last-Update: 2021-11-13
+
+--- octave-level-set-0.3.1~git.2019.04.13.orig/src/Makefile.in
++++ octave-level-set-0.3.1~git.2019.04.13/src/Makefile.in
+@@ -51,7 +51,7 @@ clean:
+ 	rm -f *.o *.oct $(TESTS)
+ 
+ $(ALGO_OBJECTS): %.o: %.cpp $(HEADERS)
+-	$(CXX) $(FULL_CXXFLAGS) $(EXTRA_FLAGS) -c $< -o $@
++	$(CXX) $(CPPFLAGS) $(FULL_CXXFLAGS) $(EXTRA_FLAGS) -c $< -o $@
+ 
+ $(OCT_OBJECTS): %.o: %.cpp $(HEADERS)
+ 	$(MKOCT) -c $< -o $@

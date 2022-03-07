@@ -1,0 +1,64 @@
+Description: Ensure unload of the parallel package in BIST
+ In some BISTs, the package parallel is unloaded, in order to ensure
+ that the calls to functions like `fload' are unvailable. However,
+ the parallel package is declared as a dependency of the level-set
+ package. The test will then fail, but not in the expected way. For
+ instance, the BIST in so_explore_descent.m is expected to fail with:
+ .
+     'fload' is not available
+ .
+ but, without the current patch, it fails instead with:
+ .
+     pkg: the following loaded package(s):
+         - level-set
+     depend on the one(s) you want to unload.
+     Either unload any depender package(s), or use the '-nodeps' flag.
+     Note: the '-nodeps' flag may affect functionality of these packages.
+Author: Rafael Laboissière <rafael@debian.org>
+Forwarded: https://savannah.gnu.org/bugs/index.php?59668
+Last-Update: 2020-12-13
+
+--- octave-level-set-0.3.1~git-2019-04-13.orig/inst/so_explore_descent.m
++++ octave-level-set-0.3.1~git-2019-04-13/inst/so_explore_descent.m
+@@ -317,7 +317,7 @@ endfunction
+ %!error <FILE must be a string or file ID>
+ %!  so_explore_descent ([2, 3], 2);
+ %!error <'fload' is not available>
+-%!  pkg unload parallel;
++%!  pkg unload -nodeps parallel;
+ %!  so_explore_descent ("foo", 2);
+ 
+ % No functional tests, since they require user interaction.
+--- octave-level-set-0.3.1~git-2019-04-13.orig/inst/so_init_params.m
++++ octave-level-set-0.3.1~git-2019-04-13/inst/so_init_params.m
+@@ -71,7 +71,7 @@ endfunction
+ %!test
+ %!  p = so_init_params (true);
+ %!error <'pararrayfun' is not available>
+-%!  pkg unload parallel;
++%!  pkg unload -nodeps parallel;
+ %!  p = so_init_params (true, 2);
+ %!test
+ %!  pkg load parallel;
+--- octave-level-set-0.3.1~git-2019-04-13.orig/inst/so_replay_descent.m
++++ octave-level-set-0.3.1~git-2019-04-13/inst/so_replay_descent.m
+@@ -218,7 +218,7 @@ endfunction
+ %!error <FILE must be a string or file ID>
+ %!  so_replay_descent ([2, 3], 2);
+ %!error <'fload' is not available>
+-%!  pkg unload parallel;
++%!  pkg unload -nodeps parallel;
+ %!  so_replay_descent ("foo", 2);
+ 
+ % Define compression / uncompression functions.  They do not really
+--- octave-level-set-0.3.1~git-2019-04-13.orig/inst/so_save_descent.m
++++ octave-level-set-0.3.1~git-2019-04-13/inst/so_save_descent.m
+@@ -178,7 +178,7 @@ endfunction
+ %!error <FILE must be a string or file ID>
+ %!  so_save_descent ([2, 3], 2, struct ());
+ %!error <'fsave' is not available>
+-%!  pkg unload parallel;
++%!  pkg unload -nodeps parallel;
+ %!  so_save_descent ("foo", 2, struct ());
+ 
+ % Working calls.
