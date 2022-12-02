@@ -12,7 +12,7 @@ Release:	1
 #  sh ./build.sh
 #  mv level-set-0.3.1.tar.gz ..
 #  cd ..
-Source0:	http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+Source0:	https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 # https://savannah.gnu.org/bugs/index.php?58842
 Patch0:		octave5.patch
 # https://savannah.gnu.org/bugs/index.php?59668
@@ -21,7 +21,7 @@ Patch1:		bist-unload-parallel.patch
 Patch2:		honor-cppflags.patch
 License:	GPLv3+
 Group:		Sciences/Mathematics
-Url:		https://octave.sourceforge.io/%{octpkg}/
+Url:		https://packages.octave.org/%{octpkg}/
 
 BuildRequires:	octave-devel >= 4.0.0
 BuildRequires:	octave-parallel
@@ -35,8 +35,6 @@ Requires(postun): octave
 %description
 Routines for calculating the time-evolution of the level-set equation and
 extracting geometric information from the level-set function.
-
-This package is part of community Octave-Forge collection.
 
 %files
 %license COPYING
