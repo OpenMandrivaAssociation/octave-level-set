@@ -1,0 +1,355 @@
+Description: Do not fail bists with "function called with too many inputs"
+Author: Rafael Laboissière <rafael@debian.org>
+Forwarded: no
+Last-Update: 2022-04-22
+
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/fastmarching.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/fastmarching.m
+@@ -119,7 +119,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  fastmarching ()
+-%!error <Invalid call to>
++%!error <fastmarching: function called with too many inputs>
+ %!  fastmarching (1, 2, 3, 4)
+ %!error <Invalid call to>
+ %!  [a, b] = fastmarching (1, 2)
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_absolute_geom.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_absolute_geom.m
+@@ -67,7 +67,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_absolute_geom (1, 2);
+-%!error <Invalid call to>
++%!error <ls_absolute_geom: function called with too many inputs>
+ %!  ls_absolute_geom (1, 2, 3, 4);
+ %!error <ls_absolute_geom is only implemented for 2D>
+ %!  x = [-1, 1];
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_build_mesh.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_build_mesh.m
+@@ -149,7 +149,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_build_mesh (1)
+-%!error <Invalid call to>
++%!error <ls_build_mesh: function called with too many inputs>
+ %!  ls_build_mesh (1, 2, 3, 4)
+ 
+ % Test for missing absolute coordinates.
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_check.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_check.m
+@@ -70,7 +70,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_check (1, 2)
+-%!error <Invalid call to>
++%!error <ls_check: function called with too many inputs>
+ %!  ls_check (1, 2, 3, 4)
+ %!error <PHI and WHERE must be of the same size>
+ %!  ls_check (1, "inside", [1, 2]);
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_complement.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_complement.m
+@@ -42,7 +42,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_complement ()
+-%!error <Invalid call to>
++%!error <ls_complement: function called with too many inputs>
+ %!  ls_complement (1, 2)
+ 
+ % Basic tests for the function.
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_distance_fcn.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_distance_fcn.m
+@@ -53,7 +53,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_distance_fcn ()
+-%!error <Invalid call to>
++%!error <ls_distance_fcn: function called with too many inputs>
+ %!  ls_distance_fcn (1, 2, 3)
+ 
+ % Check 0D case.
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_enforce.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_enforce.m
+@@ -70,7 +70,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_enforce (1, 2)
+-%!error <Invalid call to>
++%!error <ls_enforce: function called with too many inputs>
+ %!  ls_enforce (1, 2, 3, 4)
+ %!error <PHI and WHERE must be of the same size>
+ %!  ls_enforce (1, "inside", [1, 2]);
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_enforce_speed.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_enforce_speed.m
+@@ -72,7 +72,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_enforce_speed (1, 2)
+-%!error <Invalid call to>
++%!error <ls_enforce_speed: function called with too many inputs>
+ %!  ls_enforce_speed (1, 2, 3, 4)
+ %!error <F and WHERE must be of the same size>
+ %!  ls_enforce_speed (1, "inside", [1, 2]);
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_equal.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_equal.m
+@@ -46,7 +46,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_equal (1)
+-%!error <Invalid call to>
++%!error <ls_equal: function called with too many inputs>
+ %!  ls_equal (1, 2, 3)
+ %!error <PHI1 and PHI2 must be of the same size>
+ %!  ls_equal (1, [1, 2])
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_extract_solution.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_extract_solution.m
+@@ -71,7 +71,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_extract_solution (1, 2, 3)
+-%!error <Invalid call to>
++%!error <ls_extract_solution: function called with too many inputs>
+ %!  ls_extract_solution (1, 2, 3, 4, 5)
+ %!error <PHI0 and F must be of the same size>
+ %!  ls_extract_solution (1, [1, 2], [1, 2], [3; 4]);
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_find_geometry.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_find_geometry.m
+@@ -318,7 +318,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_find_geometry ()
+-%!error <Invalid call to>
++%!error <ls_find_geometry: function called with too many inputs>
+ %!  ls_find_geometry (1, 2, 3, 4)
+ %!error <ls_find_geometry is only implemented for 2D>
+ %!  ls_find_geometry (resize (zeros (8, 1), [2, 2, 2]))
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_hausdorff_dist.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_hausdorff_dist.m
+@@ -77,7 +77,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_hausdorff_dist (1)
+-%!error <Invalid call to>
++%!error <ls_hausdorff_dist: function called with too many inputs>
+ %!  ls_hausdorff_dist (1, 2, 3, 4)
+ %!error <H must be scalar>
+ %!  ls_hausdorff_dist (1, 2, [3, 3])
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_init_narrowband.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_init_narrowband.m
+@@ -61,7 +61,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_init_narrowband ()
+-%!error <Invalid call to>
++%!error <ls_init_narrowband: function called with too many inputs>
+ %!  ls_init_narrowband (1, 2, 3)
+ 
+ % Check 0D case.
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_inside.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_inside.m
+@@ -44,7 +44,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_inside ()
+-%!error <Invalid call to>
++%!error <ls_inside: function called with too many inputs>
+ %!  ls_inside (1, 2)
+ 
+ % Basic test.
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_isempty.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_isempty.m
+@@ -37,7 +37,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_isempty ()
+-%!error <Invalid call to>
++%!error <ls_isempty: function called with too many inputs>
+ %!  ls_isempty (1, 2)
+ 
+ % Basic tests for the function.
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_issubset.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_issubset.m
+@@ -40,7 +40,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_issubset (1)
+-%!error <Invalid call to>
++%!error <ls_issubset: function called with too many inputs>
+ %!  ls_issubset (1, 2, 3)
+ %!error <PHI1 and PHI2 must be of the same size>
+ %!  ls_issubset (1, [1, 2])
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_nb_from_geom.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_nb_from_geom.m
+@@ -89,7 +89,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_nb_from_geom (1)
+-%!error <Invalid call to>
++%!error <ls_nb_from_geom: function called with too many inputs>
+ %!  ls_nb_from_geom (1, 2, 3, 4)
+ %!error <Invalid call to>
+ %!  [a, b] = ls_nb_from_geom (1, 2);
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_normalise.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_normalise.m
+@@ -56,7 +56,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_normalise ()
+-%!error <Invalid call to>
++%!error <ls_normalise: function called with too many inputs>
+ %!  ls_normalise (1, 2, 3, 4)
+ 
+ %!test
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_setdiff.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_setdiff.m
+@@ -41,7 +41,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_setdiff (1)
+-%!error <Invalid call to>
++%!error <ls_setdiff: function called with too many inputs>
+ %!  ls_setdiff (1, 2, 3)
+ %!error <PHI1 and PHI2 must be of the same size>
+ %!  ls_setdiff (1, [1, 2])
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_setxor.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_setxor.m
+@@ -45,7 +45,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_setxor (1)
+-%!error <Invalid call to>
++%!error <ls_setxor: function called with too many inputs>
+ %!  ls_setxor (1, 2, 3)
+ %!error <PHI1 and PHI2 must be of the same size>
+ %!  ls_setxor (1, [1, 2])
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_signed_distance.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_signed_distance.m
+@@ -54,7 +54,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_signed_distance ()
+-%!error <Invalid call to>
++%!error <ls_signed_distance: function called with too many inputs>
+ %!  ls_signed_distance (1, 2, 3)
+ 
+ % Check 0D case.
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_solve_stationary.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_solve_stationary.m
+@@ -171,7 +171,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_solve_stationary (1)
+-%!error <Invalid call to>
++%!error <ls_solve_stationary: function called with too many inputs>
+ %!  ls_solve_stationary (1, 2, 3, 4, 5)
+ %!error <PHI and F must be of the same size>
+ %!  ls_solve_stationary ([1, 2], [3; 4]);
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/ls_time_step.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/ls_time_step.m
+@@ -142,7 +142,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  ls_time_step (1, 2)
+-%!error <Invalid call to>
++%!error <ls_time_step: function called with too many inputs>
+ %!  ls_time_step (1, 2, 3, 4, 5, 6)
+ %!error <Invalid call to>
+ %!  ls_time_step (1, 2, 3, 4, [5, 5])
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/so_example_problem.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/so_example_problem.m
+@@ -237,7 +237,7 @@ endfunction
+ % Test for errors.
+ %!error <Invalid call to>
+ %!  so_example_problem ();
+-%!error <Invalid call to>
++%!error <so_example_problem: function called with too many inputs>
+ %!  so_example_problem (1, 2);
+ %!error <DATA should be a struct>
+ %!  so_example_problem (1);
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/so_explore_descent.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/so_explore_descent.m
+@@ -310,7 +310,7 @@ endfunction
+ % Test for errors.
+ %!error <Invalid call to>
+ %!  so_explore_descent (1);
+-%!error <Invalid call to>
++%!error <so_explore_descent: function called with too many inputs>
+ %!  so_explore_descent (1, 2, 3);
+ %!error <FILE must be a string or file ID>
+ %!  so_explore_descent (struct (), 2);
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/so_init_params.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/so_init_params.m
+@@ -60,7 +60,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  so_init_params ()
+-%!error <Invalid call to>
++%!error <so_init_params: function called with too many inputs>
+ %!  so_init_params (true, 1, 2)
+ %!error <invalid number of processors>
+ %!  so_init_params (true, 0);
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/so_replay_descent.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/so_replay_descent.m
+@@ -205,7 +205,7 @@ endfunction
+ % Test for errors.
+ %!error <Invalid call to>
+ %!  so_replay_descent (1);
+-%!error <Invalid call to>
++%!error <so_replay_descent: function called with too many inputs>
+ %!  so_replay_descent (1, 2, 3, 4);
+ %!error <Invalid call to>
+ %!  so_replay_descent (1, 2, 0);
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/so_run_descent.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/so_run_descent.m
+@@ -226,7 +226,7 @@ function [s, descentLog] = so_run_descen
+ 
+   % Create 'null' check_stop callback if none is present.
+   if (!isfield (data.cb, "check_stop"))
+-    data.cb.check_stop = @() false;
++    data.cb.check_stop = @(data) false;
+   endif
+ 
+   % Create default 'solve_stationary' callback.
+@@ -390,7 +390,7 @@ endfunction
+ % Test for errors.
+ %!error <Invalid call to>
+ %!  so_run_descent (1, 2);
+-%!error <Invalid call to>
++%!error <so_run_descent: function called with too many inputs>
+ %!  so_run_descent (1, 2, 3, 4);
+ %!error <Invalid call to>
+ %!  so_run_descent (0, phi0, data);
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/so_save_descent.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/so_save_descent.m
+@@ -169,7 +169,7 @@ endfunction
+ % Test for errors.
+ %!error <Invalid call to>
+ %!  so_save_descent (1, 2);
+-%!error <Invalid call to>
++%!error <so_save_descent: function called with too many inputs>
+ %!  so_save_descent (1, 2, 3, 4);
+ %!error <DATA should be a struct>
+ %!  so_save_descent (1, 2, 3);
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/so_step_armijo.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/so_step_armijo.m
+@@ -235,7 +235,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  so_step_armijo (1, 2, 3, 4)
+-%!error <Invalid call to>
++%!error <so_step_armijo: function called with too many inputs>
+ %!  so_step_armijo (1, 2, 3, 4, 5, 6)
+ %!error <Invalid call to>
+ %!  so_step_armijo ([1, 1], 2, 3, 4, struct ())
+--- octave-level-set-0.3.1~git.2019.04.13.orig/inst/upwind_gradient_norm.m
++++ octave-level-set-0.3.1~git.2019.04.13/inst/upwind_gradient_norm.m
+@@ -90,7 +90,7 @@ endfunction
+ % Test for error conditions.
+ %!error <Invalid call to>
+ %!  upwind_gradient_norm ()
+-%!error <Invalid call to>
++%!error <upwind_gradient_norm: function called with too many inputs>
+ %!  upwind_gradient_norm (1, 2, 3, 4)
+ %!error <Invalid call to>
+ %!  upwind_gradient_norm ([1, 1], [2, 2], [3, 3])
