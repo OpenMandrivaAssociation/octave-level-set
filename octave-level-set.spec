@@ -2,8 +2,8 @@
 
 Summary:	Calculating the time-evolution of the level-set equation with Octave
 Name:		octave-level-set
-Version:	0.3.0
-Release:	1
+Version:	0.3.1
+Release:	3
 License:	GPLv3+
 Group:		Sciences/Mathematics
 #Url:		https://packages.octave.org/level-set/
@@ -23,6 +23,8 @@ Patch1:		bist-unload-parallel.patch
 Patch2:		honor-cppflags.patch
 # https://savannah.gnu.org/bugs/index.php?62353
 Patch3:		bists-fail-too-many-args.patch
+# https://savannah.gnu.org/bugs/index.php?65293
+Patch4:		octave9.patch
 
 BuildRequires:  octave-devel >= 3.6.0
 BuildRequires:	octave-parallel
