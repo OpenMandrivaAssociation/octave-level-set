@@ -3,7 +3,7 @@
 Summary:	Calculating the time-evolution of the level-set equation with Octave
 Name:		octave-level-set
 Version:	0.3.1
-Release:	3
+Release:	4
 License:	GPLv3+
 Group:		Sciences/Mathematics
 #Url:		https://packages.octave.org/level-set/
