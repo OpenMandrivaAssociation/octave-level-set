@@ -15,16 +15,6 @@ Group:		Sciences/Mathematics
 #  mv level-set-0.3.1.tar.gz ..
 #  cd ..
 Source0:	https://downloads.sourceforge.net/octave/level-set-%{version}.tar.gz
-# https://savannah.gnu.org/bugs/index.php?58842
-Patch0:		octave5.patch
-# https://savannah.gnu.org/bugs/index.php?59668
-Patch1:		bist-unload-parallel.patch
-# https://savannah.gnu.org/bugs/index.php?61475
-Patch2:		honor-cppflags.patch
-# https://savannah.gnu.org/bugs/index.php?62353
-Patch3:		bists-fail-too-many-args.patch
-# https://savannah.gnu.org/bugs/index.php?65293
-Patch4:		octave9.patch
 
 BuildRequires:  octave-devel >= 3.6.0
 BuildRequires:	octave-parallel
@@ -34,6 +24,19 @@ Requires:	octave-parallel
 
 Requires(post): octave
 Requires(postun): octave
+
+%patchlist
+level-set-0.3.1-relax_c++11.patch
+# https://savannah.gnu.org/bugs/index.php?58842
+octave5.patch
+# https://savannah.gnu.org/bugs/index.php?59668
+bist-unload-parallel.patch
+# https://savannah.gnu.org/bugs/index.php?61475
+honor-cppflags.patch
+# https://savannah.gnu.org/bugs/index.php?62353
+bists-fail-too-many-args.patch
+# https://savannah.gnu.org/bugs/index.php?65293
+octave9.patch
 
 %description
 Routines for calculating the time-evolution of the level-set equation

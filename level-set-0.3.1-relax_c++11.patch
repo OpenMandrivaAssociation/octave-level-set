@@ -1,0 +1,12 @@
+--- a/src/configure
++++ b/src/configure
+@@ -2637,7 +2637,7 @@ ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
+ 
+ ## autoconf-archive (Debian package name) must be installed
+ 
+-  ax_cxx_compile_alternatives="11 0x"    ax_cxx_compile_cxx11_required=true
++  ax_cxx_compile_alternatives=""    ax_cxx_compile_cxx11_required=false
+   ac_ext=cpp
+ ac_cpp='$CXXCPP $CPPFLAGS'
+ ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+
